@@ -9,7 +9,7 @@ const BlogList = (props) => {
          {
           props.list.map((item,index)=>{
             return(
-              <Link key={index} to={"/"} className='card w-100 glass'>
+              <Link key={index} to={"/details/"+item['id']} className='card w-100 glass'>
               <figure><img src={item['img']} alt="car!" /></figure>
               <div className="card-body">
                 <h2 className="card-title">{item['title']}</h2>
