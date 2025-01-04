@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../Layout/Layout'
+import { useParams } from 'react-router-dom'
+import { postByCategory } from '../APIRequest/APIRequest'
+import Loader from '../Component/Loader'
+import BlogList from './../Component/BlogList';
 
 const ByCategoryPage = () => {
-  return (
-   
+  let {categoryID} = useParams()
+
+  let [list,setList] = useState(null)
+  
+  
+    useEffect(() => {
+        (async () => {
+          let res = await postByCategory(categoryID);
+          setList(res);
+        })();
+      }, [categoryID]);
+
+
+  return (   
     <Layout>
-      <h1>This Is by Category Page</h1>
+      {list===null?<Loader/>:<BlogList list={list}/>} 
     </Layout>
   )
 }

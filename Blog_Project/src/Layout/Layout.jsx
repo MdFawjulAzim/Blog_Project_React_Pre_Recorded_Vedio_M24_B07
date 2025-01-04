@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 
 const Layout = (props) => {
   const [categories, setCategories] = useState([]);
-  console.log(categories);
 
   useEffect(() => {
     (async () => {
@@ -43,7 +42,7 @@ const Layout = (props) => {
               </li>
               {categories.map((item, index) => {
                 return (
-                  <li key={index}>
+                  <li key={index.toString()}>
                     <NavLink to={"/byCategory/" + item["id"]}>
                       {item.name}
                     </NavLink>
@@ -61,7 +60,7 @@ const Layout = (props) => {
             </li>
             {categories.map((item, index) => {
               return (
-                <li key={index}>
+                <li key={index.toString()}>
                   <NavLink to={"/byCategory/" + item["id"]}>
                     {item.name}
                   </NavLink>
