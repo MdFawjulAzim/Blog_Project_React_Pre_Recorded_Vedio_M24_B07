@@ -1,8 +1,12 @@
 import React from 'react'
+import Layout from '../Layout/Layout'
 
 const DetailsPage = () => {
   return (
-    <div>DetailsPage</div>
+    <Layout>
+      <h1>This Is DetailsPage</h1>
+
+    </Layout>
   )
 }
 

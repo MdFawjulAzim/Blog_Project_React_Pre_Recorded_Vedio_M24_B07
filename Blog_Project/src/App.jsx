@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Router } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import HomePage from './Pages/HomePage';
 import ByCategoryPage from './Pages/ByCategoryPage';
 import DetailsPage from './Pages/DetailsPage';
@@ -8,11 +8,11 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <Router>
+        <Routes>
           <Route path='/' element={<HomePage/>} />  
-          <Route path='/byCategory/{categoryID}' element={<ByCategoryPage/>} />  
+          <Route path='/byCategory/:categoryID' element={<ByCategoryPage/>} />  
           <Route path='/details/:postID' element={<DetailsPage/>} />  
-        </Router>     
+        </Routes>     
       </BrowserRouter>
     </div>
   )
