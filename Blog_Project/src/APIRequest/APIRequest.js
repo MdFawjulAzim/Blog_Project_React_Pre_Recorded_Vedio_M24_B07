@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const BaseURL = "https://basic-blog.teamrabbil.com/api";
 
-export async function posCategories(){
+export async function postCategories(){
     // let res = await axios.get(`${BaseURL}/categories`)
     let res = await axios.get(BaseURL+"/post-categories") //Same thing
 
@@ -12,3 +12,15 @@ export async function posCategories(){
         return [];
     }
 }
+
+export async function postLatest(){
+    // let res = await axios.get(`${BaseURL}/categories`)
+    let res = await axios.get(BaseURL+"/post-newest") //Same thing
+
+    if(res.status === 200){
+        return res.data
+    }else{
+        return [];
+    }
+}
+
