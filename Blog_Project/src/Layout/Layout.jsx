@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { posCategories } from "../APIRequest/APIRequest";
+import { NavLink } from "react-router-dom";
 
 const Layout = (props) => {
+  const [categories, setCategories] = useState([]);
+  console.log(categories);
+
+  useEffect(() => {
+    (async () => {
+      let res = await posCategories();
+      setCategories(res);
+    })();
+  }, []);
+
   return (
     <div>
       <div className="navbar shadow bg-base-100">
@@ -27,8 +39,17 @@ const Layout = (props) => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a>Item 1</a>
+                <NavLink to={"/"}>Home</NavLink>
               </li>
+              {categories.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <NavLink to={"/byCategory/" + item["id"]}>
+                      {item.name}
+                    </NavLink>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <a className="btn btn-ghost text-xl">AzimBlog</a>
@@ -36,8 +57,17 @@ const Layout = (props) => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Item 1</a>
+              <NavLink to={"/"}>Home</NavLink>
             </li>
+            {categories.map((item, index) => {
+              return (
+                <li key={index}>
+                  <NavLink to={"/byCategory/" + item["id"]}>
+                    {item.name}
+                  </NavLink>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
