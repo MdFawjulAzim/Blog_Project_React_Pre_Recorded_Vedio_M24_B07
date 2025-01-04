@@ -4,9 +4,10 @@ import BlogList from '../Component/BlogList';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { postLatest } from '../APIRequest/APIRequest';
+import Loader from '../Component/Loader';
 
 const HomePage = () => {
-  let [list,setList] = useState([])
+  let [list,setList] = useState(null)
 
 
   useEffect(() => {
@@ -19,7 +20,7 @@ const HomePage = () => {
 
   return (
     <Layout>
-      <BlogList list={list} />      
+      {list===null?<Loader/>:<BlogList list={list}/>}      
     </Layout>
   )
 }
